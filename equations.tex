@@ -1,0 +1,34 @@
+\documentclass[11pt]{article}
+
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[hidelinks]{hyperref}
+
+\input{macros}
+
+\numberwithin{equation}{section}
+
+\title{Equation Library}
+\author{}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\input{symbols}
+
+\section{Spin Hamiltonians}
+\input{sections/hamiltonian}
+
+\section{Magnetization Dynamics}
+\input{sections/llg_equation}
+\input{sections/spin_torque}
+
+\section{Thermal Stability and Fluctuations}
+\input{sections/thermal_stability}
+
+\end{document}

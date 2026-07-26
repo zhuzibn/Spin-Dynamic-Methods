@@ -1,0 +1,41 @@
+\subsection{Landau--Lifshitz--Gilbert Equation}
+
+\paragraph{Equation.}
+The Gilbert form for the normalized magnetization is
+\begin{equation}
+    \frac{\dd\mvec}{\dd t}
+    = -\gamma_0\,\mvec\times\Heff
+      + \alpha\,\mvec\times\frac{\dd\mvec}{\dd t}.
+    \label{eq:llg-gilbert}
+\end{equation}
+The equivalent explicit form is
+\begin{equation}
+    \frac{\dd\mvec}{\dd t}
+    = -\frac{\gamma_0}{1+\alpha^2}
+      \left[
+        \mvec\times\Heff
+        + \alpha\,\mvec\times(\mvec\times\Heff)
+      \right].
+    \label{eq:llg-explicit}
+\end{equation}
+
+\paragraph{Definitions.}
+$\mvec$ is the normalized magnetization, $\gamma_0>0$ is the gyromagnetic factor,
+$\alpha$ is the Gilbert damping parameter, and $\Heff$ is the effective field.
+
+\paragraph{Assumptions.}
+The magnetization magnitude is constant, so $\norm{\mvec}=1$.  Equation
+\eqref{eq:llg-explicit} contains no additional spin torque or thermal field.
+
+\paragraph{Units and sign convention.}
+This form uses $\Heff$ in $\mathrm{A\,m^{-1}}$ and
+$\gamma_0=\mu_0\abs{\gamma}$ in $\mathrm{m\,A^{-1}\,s^{-1}}$.  The electron
+gyromagnetic sign is represented by the explicit minus sign.
+
+\paragraph{Source.}
+Add the paper or textbook used for the particular model here.
+
+\paragraph{Implementation notes.}
+Renormalizing $\mvec$ after a numerical step may hide integration error.  Prefer an
+integration method designed to preserve the unit-vector constraint, and document any
+renormalization explicitly.

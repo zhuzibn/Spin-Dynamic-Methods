@@ -1,0 +1,36 @@
+\subsection{Atomistic Spin Hamiltonian}
+
+\paragraph{Equation.}
+A common classical spin Hamiltonian containing exchange, uniaxial anisotropy,
+Dzyaloshinskii--Moriya interaction, and Zeeman energy is
+\begin{align}
+    \mathcal{H}
+    ={}& -\frac{1}{2}\sum_{i\ne j} J_{ij}\,\svec_i\cdot\svec_j
+        -\sum_i K_i\bigl(\svec_i\cdot\unitvect{e}_i\bigr)^2
+        \notag\\
+       & -\frac{1}{2}\sum_{i\ne j}
+           \vect{D}_{ij}\cdot(\svec_i\times\svec_j)
+        -\sum_i \vect{\mu}_i\cdot\Bext.
+    \label{eq:atomistic-hamiltonian}
+\end{align}
+
+\paragraph{Definitions.}
+$J_{ij}$ is the exchange coupling, $K_i$ is the uniaxial anisotropy energy,
+$\unitvect{e}_i$ is the easy-axis direction, $\vect{D}_{ij}$ is the Dzyaloshinskii--
+Moriya vector, and $\vect{\mu}_i$ is the magnetic moment at site $i$.
+
+\paragraph{Assumptions.}
+Each $\svec_i$ is a classical unit vector.  The factors of $1/2$ assume that the
+pair sums include both $(i,j)$ and $(j,i)$.
+
+\paragraph{Units.}
+All terms in $\mathcal{H}$ have units of energy.  Here the external flux density
+$\Bext$ is measured in tesla, so no additional factor of $\mu_0$ appears in the
+Zeeman term.
+
+\paragraph{Source.}
+Add the source and its pair-counting and DMI sign conventions here.
+
+\paragraph{Implementation notes.}
+Confirm whether the code stores each interacting pair once or twice.  A mismatch in
+pair counting changes the exchange and DMI energies by a factor of two.

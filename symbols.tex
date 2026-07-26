@@ -1,0 +1,24 @@
+\section{Notation and Conventions}
+
+Unless a section explicitly states otherwise, vectors are bold, unit vectors carry a
+hat, time is measured in seconds, and magnetic fields $\vect{H}$ are expressed in
+$\mathrm{A\,m^{-1}}$.  The following symbols are used throughout the library.
+
+\begin{description}
+    \item[$\mvec$] Normalized magnetization, with $\norm{\mvec}=1$.
+    \item[$\svec_i$] Unit spin direction at site $i$.
+    \item[$\Ms$] Saturation magnetization.
+    \item[$\Heff$] Effective magnetic field.
+    \item[$\alpha$] Dimensionless Gilbert damping parameter.
+    \item[$\gamma_0$] Positive gyromagnetic factor for an $\vect{H}$-field formulation,
+        $\gamma_0=\mu_0\abs{\gamma}$.
+    \item[$\mu_0$] Vacuum permeability.
+    \item[$\kB$] Boltzmann constant.
+    \item[$T$] Absolute temperature.
+\end{description}
+
+\paragraph{Convention warning.}
+Some references define the effective field as $\vect{B}_{\mathrm{eff}}$ in tesla and
+use $\abs{\gamma}$, whereas this library uses $\Heff$ in $\mathrm{A\,m^{-1}}$ and
+$\gamma_0=\mu_0\abs{\gamma}$.  Check this convention before copying an equation into
+simulation code.

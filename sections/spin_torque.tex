@@ -1,0 +1,45 @@
+\subsection{Damping-Like and Field-Like Spin--Orbit Torque}
+
+\paragraph{Equation.}
+With a spin-polarization direction $\unitvect{\sigma}$, the spin--orbit torque can be
+written as
+\begin{equation}
+    \tauSOT
+    = \tau_{\mathrm{DL}}\,
+      \mvec\times(\unitvect{\sigma}\times\mvec)
+      + \tau_{\mathrm{FL}}\,
+      \mvec\times\unitvect{\sigma}.
+    \label{eq:sot-dl-fl}
+\end{equation}
+It enters the Gilbert equation additively:
+\begin{equation}
+    \frac{\dd\mvec}{\dd t}
+    = -\gamma_0\,\mvec\times\Heff
+      + \alpha\,\mvec\times\frac{\dd\mvec}{\dd t}
+      + \tauSOT.
+    \label{eq:llg-sot}
+\end{equation}
+
+\paragraph{Definitions.}
+$\tau_{\mathrm{DL}}$ and $\tau_{\mathrm{FL}}$ are torque amplitudes with units of
+$\mathrm{s^{-1}}$ in this normalization.  The unit vector $\unitvect{\sigma}$ gives
+the injected spin-polarization direction.
+
+\paragraph{Assumptions.}
+The torque is spatially uniform and the magnetization remains normalized.
+
+\paragraph{Sign convention.}
+The identities
+$\mvec\times(\unitvect{\sigma}\times\mvec)
+=-\mvec\times(\mvec\times\unitvect{\sigma})$ are equivalent, but their scalar
+coefficients have opposite signs.  Record the current direction, electron-flow
+direction, layer normal, and definition of $\unitvect{\sigma}$ when assigning torque
+amplitudes.
+
+\paragraph{Source.}
+Add the source for the torque convention and amplitude model here.
+
+\paragraph{Implementation notes.}
+If the numerical solver converts the Gilbert equation to an explicit form, it must
+also transform the torque terms consistently; do not only divide Eq.~\eqref{eq:llg-sot}
+by $1+\alpha^2$.

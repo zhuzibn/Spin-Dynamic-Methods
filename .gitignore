@@ -1,0 +1,29 @@
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.dvi
+*.fdb_latexmk
+*.fls
+*.lof
+*.lot
+*.log
+*.nav
+*.out
+*.run.xml
+*.snm
+*.synctex.gz
+*.toc
+*.vrb
+*.xdv
+
+# Reproducible rendered outputs
+/equations.pdf
+/sections/.equation-build/
+/sections/*.svg
+
+# OS and editor files
+.DS_Store
+Thumbs.db
+*~
