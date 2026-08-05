@@ -22,19 +22,9 @@ are reproducible build artifacts and are intentionally ignored by Git.
 
 ## Requirements
 
-Building the complete document requires a LaTeX distribution with `pdflatex` and
-the `amsmath`, `amssymb`, `bm`, `geometry`, and `hyperref` packages. `latexmk` is
-optional but recommended.
-
-Rendering a standalone equation SVG additionally requires:
-
-- Bash;
-- `realpath`;
-- the LaTeX `standalone` document class;
-- `latex`; and
-- `dvisvgm`.
-
-On Windows, run the SVG build script from WSL or another Bash environment.
+See `ENVIRONMENT.md` for the authoritative list of required and optional tools,
+LaTeX packages, setup commands, and read-only verification commands. On Windows,
+run the SVG build script from WSL or another Bash environment.
 
 ## Build the complete document
 
