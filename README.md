@@ -2,12 +2,16 @@
 
 This repository is a reusable, LaTeX-first collection of equations for spin
 Hamiltonians, magnetization dynamics, spin--orbit torque, and thermal stability.
-The `.tex` files are the source of truth. The PDF and SVG files produced from them
-are reproducible build artifacts and are intentionally ignored by Git.
+The `.tex` files are the source of truth. The complete `equations.pdf` is rebuilt,
+verified, and committed with each repository commit so the current rendered
+document is available on GitHub. Other generated PDF and SVG files are
+reproducible build artifacts and should not be committed.
 
 ## Repository layout
 
 - `equations.tex` — main document, package setup, and section order.
+- `equations.pdf` — tracked rendering of the complete document, rebuilt for each
+  commit.
 - `macros.tex` — shared vector, derivative, and spintronics commands.
 - `references.tex` — numbered references cited by the equation sections.
 - `symbols.tex` — parameter definitions, physical constants, units, and field
@@ -46,8 +50,8 @@ pdflatex equations.tex
 pdflatex equations.tex
 ```
 
-The output is `equations.pdf`. The PDF and auxiliary LaTeX files are ignored by
-Git.
+The output is `equations.pdf`. Commit this complete-document PDF; auxiliary LaTeX
+files remain ignored by Git.
 
 ## Build one equation as an SVG
 
@@ -118,13 +122,14 @@ Suggested entry structure:
 Commit the source and workflow files:
 
 - `.gitignore` and `README.md`;
-- `equations.tex`, `macros.tex`, and `symbols.tex`;
+- `equations.tex`, `equations.pdf`, `macros.tex`, and `symbols.tex`;
 - source `.tex` files under `sections/`; and
 - `sections/build-equation.sh`.
 
-Do not commit reproducible outputs or intermediates, including `equations.pdf`,
-LaTeX auxiliary and log files, `sections/.equation-build/`, or generated SVG files
-under `sections/`.
+Before every commit, rebuild `equations.pdf`, verify that the build succeeds, and
+include the PDF in the commit. Do not commit other reproducible outputs or
+intermediates, including LaTeX auxiliary and log files,
+`sections/.equation-build/`, or generated SVG files under `sections/`.
 
 ## Maintenance rules
 

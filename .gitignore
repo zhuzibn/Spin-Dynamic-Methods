@@ -18,8 +18,7 @@
 *.vrb
 *.xdv
 
-# Reproducible rendered outputs
-/equations.pdf
+# Reproducible rendered outputs other than the tracked complete document
 /sections/.equation-build/
 /sections/*.svg
 

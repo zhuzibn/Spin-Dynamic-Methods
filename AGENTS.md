@@ -7,6 +7,12 @@
   and inspect the document manually.
 - Run compilation or generated-output validation only when the user explicitly
   requests it.
+- Before every commit, rebuild `equations.pdf` from the current LaTeX source,
+  verify that the build succeeds, stage the PDF with the other changes, and
+  include it in the commit. When pushing the commit, push the PDF to GitHub as
+  part of that commit so the current rendered document is publicly available.
+  This commit-time requirement is an explicit exception to the default
+  no-compilation rule above.
 
 ## Reference style
 
