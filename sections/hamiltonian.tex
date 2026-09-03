@@ -1,27 +1,54 @@
 \subsection{Atomistic Spin Hamiltonian}
 
 \paragraph{Equation.}
-A common classical spin Hamiltonian containing exchange, uniaxial anisotropy,
-Dzyaloshinskii--Moriya interaction, and Zeeman energy is
+Following the ASTRO exchange-sign convention, a classical spin Hamiltonian
+containing exchange, uniaxial anisotropy, Dzyaloshinskii--Moriya interaction,
+and Zeeman energy is
 \begin{align}
     \mathcal{H}
-    ={}& -\frac{1}{2}\sum_{i\ne j} J_{ij}\,\svec_i\cdot\svec_j
-        -\sum_i K_i\bigl(\svec_i\cdot\unitvect{e}_i\bigr)^2
-        \notag\\
-       & -\frac{1}{2}\sum_{i\ne j}
-           \vect{D}_{ij}\cdot(\svec_i\times\svec_j)
-        -\sum_i \vect{\mu}_i\cdot\Bext.
+    ={} & +\frac{1}{2}\sum_{i\ne j} J_{ij}\,\svec_i\cdot\svec_j
+    -\sum_i K_i\bigl(\svec_i\cdot\unitvect{e}_i\bigr)^2
+    \notag                                                      \\
+        & -\frac{1}{2}\sum_{i\ne j}
+    \vect{D}_{ij}\cdot(\svec_i\times\svec_j)
+    -\sum_i \vect{\mu}_i\cdot\Bext.
     \label{eq:atomistic-hamiltonian}
 \end{align}
 
 \paragraph{Definitions.}
-$J_{ij}$ is the exchange coupling, $K_i$ is the uniaxial anisotropy energy,
-$\unitvect{e}_i$ is the easy-axis direction, $\vect{D}_{ij}$ is the Dzyaloshinskii--
-Moriya vector, and $\vect{\mu}_i$ is the magnetic moment at site $i$.
+$J_{ij}$ is the exchange-link energy in the ASTRO sign convention: $J_{ij}<0$
+favors parallel alignment, whereas $J_{ij}>0$ favors antiparallel alignment.
+$K_i$ is the uniaxial anisotropy energy, $\unitvect{e}_i$ is the easy-axis
+direction, $\vect{D}_{ij}$ is the Dzyaloshinskii--Moriya vector, and
+$\vect{\mu}_i$ is the magnetic moment at site $i$.
 
 \paragraph{Assumptions.}
-Each $\svec_i$ is a classical unit vector.  The factors of $1/2$ assume that the
-pair sums include both $(i,j)$ and $(j,i)$.
+Each $\svec_i$ is a classical unit vector.  The pair coefficients satisfy
+$J_{ji}=J_{ij}$ and $\vect{D}_{ji}=-\vect{D}_{ij}$.  The factors of $1/2$
+assume that the pair sums include both ordered pairs $(i,j)$ and $(j,i)$.
+If each physical bond is instead included only once, for example in a
+unique-bond sum $\sum_{\langle i,j\rangle}$, both factors of $1/2$ must be
+omitted.  These are equivalent pair-counting conventions and must not be mixed.
+
+\paragraph{Pair counting and effective field.}
+Let $\mu_i=\abs{\vect{\mu}_i}$ and define the effective flux density by
+\begin{equation}
+    \vect{B}_{\mathrm{eff},i}
+    =-\frac{1}{\mu_i}\frac{\partial\mathcal{H}}{\partial\svec_i}.
+    \label{eq:atomistic-effective-field}
+\end{equation}
+For the ordered-pair Hamiltonian above, the exchange and DMI contributions are
+\begin{equation}
+    \vect{B}_{\mathrm{ex},i}
+    =-\frac{1}{\mu_i}\sum_{j\ne i}J_{ij}\svec_j,
+    \qquad
+    \vect{B}_{\mathrm{DMI},i}
+    =\frac{1}{\mu_i}\sum_{j\ne i}\svec_j\times\vect{D}_{ij}.
+    \label{eq:atomistic-pair-fields}
+\end{equation}
+The two ordered occurrences of each bond give identical derivatives, which
+cancel the Hamiltonian factors of $1/2$.  Consequently, no extra factor of
+$1/2$ belongs in either effective-field expression.
 
 \paragraph{Units.}
 All terms in $\mathcal{H}$ have units of energy.  Here the external flux density
@@ -29,8 +56,18 @@ $\Bext$ is measured in tesla, so no additional factor of $\mu_0$ appears in the
 Zeeman term.
 
 \paragraph{Source.}
-Add the source and its pair-counting and DMI sign conventions here.
+For the extended classical spin Hamiltonian and Hamiltonian-derivative field
+convention, see Evans et al.~\cite{evans2014atomistic}.
 
 \paragraph{Implementation notes.}
-Confirm whether the code stores each interacting pair once or twice.  A mismatch in
-pair counting changes the exchange and DMI energies by a factor of two.
+The ASTRO implementation evaluates the field,
+$\vect{B}_{\mathrm{eff},i}=-(1/\mu_i)\,\partial\mathcal{H}/\partial\svec_i$,
+rather than the total energy and includes both forward and backward nearest
+neighbors.  The $J_{ij}$ used above is therefore the coefficient stored in
+ASTRO's exchange-link arrays: its exchange field is
+$-(1/\mu_i)\sum_jJ_{ij}\svec_j$~\cite{astro-code}.  No factor of $1/2$ should
+appear in the exchange or DMI field formulas because differentiation produces
+two identical bond contributions, cancelling the Hamiltonian factor.  ASTRO's
+DMI component expressions correspond to
+$\vect{D}_{ij}=D(\unitvect{z}\times\unitvect{r}_{ij})$ and the antisymmetry
+$\vect{D}_{ji}=-\vect{D}_{ij}$ used above.

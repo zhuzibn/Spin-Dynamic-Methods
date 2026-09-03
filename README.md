@@ -1,4 +1,4 @@
-# Equation Library
+# Spin Dynamic Methods
 
 This repository is a reusable, LaTeX-first collection of equations for spin
 Hamiltonians, magnetization dynamics, spin--orbit torque, and thermal stability.
@@ -9,10 +9,14 @@ are reproducible build artifacts and are intentionally ignored by Git.
 
 - `equations.tex` — main document, package setup, and section order.
 - `macros.tex` — shared vector, derivative, and spintronics commands.
-- `symbols.tex` — notation, units, and field-convention definitions.
+- `references.tex` — numbered references cited by the equation sections.
+- `symbols.tex` — parameter definitions, physical constants, units, and field
+  conventions.
 - `sections/hamiltonian.tex` — atomistic spin Hamiltonian.
-- `sections/llg_equation.tex` — Gilbert and explicit LLG equations.
-- `sections/spin_torque.tex` — damping-like and field-like spin--orbit torque.
+- `sections/llg_equation.tex` — LLGS and equivalent LL equations with field-like
+  torque, including the torque amplitudes and sign convention.
+- `sections/spin_torque.tex` — reusable damping-like and field-like spin--orbit
+  torque expressions not included in the complete document.
 - `sections/thermal_stability.tex` — thermal stability factor and macrospin thermal
   field correlation.
 - `sections/thermal_stability_delta.tex` — reusable equation fragment for the

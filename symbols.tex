@@ -7,15 +7,41 @@ $\mathrm{A\,m^{-1}}$.  The following symbols are used throughout the library.
 \begin{description}
     \item[$\mvec$] Normalized magnetization, with $\norm{\mvec}=1$.
     \item[$\svec_i$] Unit spin direction at site $i$.
-    \item[$\Ms$] Saturation magnetization.
+    \item[$\Ms$] Saturation magnetization of the ferromagnetic layer.
     \item[$\Heff$] Effective magnetic field.
+    \item[$\vect{\sigma}$] Spin-polarization unit vector.
     \item[$\alpha$] Dimensionless Gilbert damping parameter.
+    \item[$\gamma$] Positive gyromagnetic ratio, $\gamma=g\muB/\hbar$, where $g$
+        is the Land\'e $g$-factor.
     \item[$\gamma_0$] Positive gyromagnetic factor for an $\vect{H}$-field formulation,
         $\gamma_0=\mu_0\abs{\gamma}$.
+    \item[$\theta_{\mathrm{SH}}$] Spin-Hall angle.
+    \item[$J_c$] Charge-current density.
+    \item[$t_{\mathrm{FM}}$] Ferromagnetic-layer thickness.
+    \item[$\beta$] Signed torque ratio,
+        $\beta=\tau_{\mathrm{FLT}}/\tau_{\mathrm{DLT}}$.
+    \item[$\tau_{\mathrm{DLT}}$, $\tau_{\mathrm{FLT}}$] Damping-like and
+        field-like torque amplitudes, respectively; both have field units.
+    \item[$e$] Positive elementary charge.
     \item[$\mu_0$] Vacuum permeability.
+    \item[$\muB$] Bohr magneton.
+    \item[$\hbar$] Reduced Planck constant.
     \item[$\kB$] Boltzmann constant.
     \item[$T$] Absolute temperature.
 \end{description}
+
+\paragraph{Physical constants.}
+The following values reproduce
+\href{https://github.com/zhuzibn/general/blob/master/constant/constantfile.m}%
+{\texttt{constantfile.m}}:
+\begin{align*}
+    \gamma &= 1.760859644\times10^{11}\ \mathrm{rad\,s^{-1}\,T^{-1}},
+    & e &= 1.602176565\times10^{-19}\ \mathrm{C}, \\
+    \mu_0 &= 1.25663706143592\times10^{-6}\ \mathrm{T\,m\,A^{-1}},
+    & \muB &= 9.274\times10^{-24}\ \mathrm{J\,T^{-1}}, \\
+    \hbar &= 6.58211951440\times10^{-16}\ \mathrm{eV\,s},
+    & \kB &= 1.38064852\times10^{-23}\ \mathrm{J\,K^{-1}}.
+\end{align*}
 
 \paragraph{Convention warning.}
 Some references define the effective field as $\vect{B}_{\mathrm{eff}}$ in tesla and

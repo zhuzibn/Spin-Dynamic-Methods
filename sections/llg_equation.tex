@@ -1,41 +1,60 @@
-\subsection{Landau--Lifshitz--Gilbert Equation}
-
-\paragraph{Equation.}
-The Gilbert form for the normalized magnetization is
-\begin{equation}
+% Adapted from Eqs. (1)--(4) of Z. Kong et al., J. Appl. Phys. 140,
+% 063903 (2026), doi:10.1063/5.0326907, by removing the atom index i.
+\paragraph{LLGS form with field-like torque.}
+\begin{align}
     \frac{\dd\mvec}{\dd t}
-    = -\gamma_0\,\mvec\times\Heff
-      + \alpha\,\mvec\times\frac{\dd\mvec}{\dd t}.
+    ={}& -\gamma\,\mvec\times\Heff
+         + \alpha\,\mvec\times\frac{\dd\mvec}{\dd t}
+         - \gamma\tau_{\mathrm{DLT}}\,
+           \mvec\times\bigl(\mvec\times\vect{\sigma}\bigr)
+         \notag\\
+       & + \gamma\tau_{\mathrm{FLT}}\,
+           \mvec\times\vect{\sigma}.
     \label{eq:llg-gilbert}
-\end{equation}
-The equivalent explicit form is
-\begin{equation}
-    \frac{\dd\mvec}{\dd t}
-    = -\frac{\gamma_0}{1+\alpha^2}
-      \left[
-        \mvec\times\Heff
-        + \alpha\,\mvec\times(\mvec\times\Heff)
-      \right].
-    \label{eq:llg-explicit}
-\end{equation}
+\end{align}
 
-\paragraph{Definitions.}
-$\mvec$ is the normalized magnetization, $\gamma_0>0$ is the gyromagnetic factor,
-$\alpha$ is the Gilbert damping parameter, and $\Heff$ is the effective field.
+\paragraph{Equivalent LL form with field-like torque.}
+\begin{align}
+    \bigl(1+\alpha^2\bigr)\frac{\dd\mvec}{\dd t}
+    ={}& -\gamma\,\mvec\times\Heff
+         - \alpha\gamma\,\mvec\times\bigl(\mvec\times\Heff\bigr)
+         \notag\\
+       & + \alpha\gamma\tau_{\mathrm{DLT}}\,
+           \mvec\times\vect{\sigma}
+         - \gamma\tau_{\mathrm{DLT}}\,
+           \mvec\times\bigl(\mvec\times\vect{\sigma}\bigr)
+         \notag\\
+       & + \alpha\gamma\tau_{\mathrm{FLT}}\,
+           \mvec\times\bigl(\mvec\times\vect{\sigma}\bigr)
+         + \gamma\tau_{\mathrm{FLT}}\,
+           \mvec\times\vect{\sigma}.
+    \label{eq:ll-with-flt}
+\end{align}
 
-\paragraph{Assumptions.}
-The magnetization magnitude is constant, so $\norm{\mvec}=1$.  Equation
-\eqref{eq:llg-explicit} contains no additional spin torque or thermal field.
+\paragraph{Torque amplitudes.}
+For a ferromagnetic layer,
+\[
+    \tau_{\mathrm{DLT}}
+    = \frac{\hbar\theta_{\mathrm{SH}}J_c}
+           {2e\,t_{\mathrm{FM}}\Ms},
+    \qquad
+    \tau_{\mathrm{FLT}}
+    = \beta\tau_{\mathrm{DLT}}.
+\]
 
-\paragraph{Units and sign convention.}
-This form uses $\Heff$ in $\mathrm{A\,m^{-1}}$ and
-$\gamma_0=\mu_0\abs{\gamma}$ in $\mathrm{m\,A^{-1}\,s^{-1}}$.  The electron
-gyromagnetic sign is represented by the explicit minus sign.
-
-\paragraph{Source.}
-Add the paper or textbook used for the particular model here.
-
-\paragraph{Implementation notes.}
-Renormalizing $\mvec$ after a numerical step may hide integration error.  Prefer an
-integration method designed to preserve the unit-vector constraint, and document any
-renormalization explicitly.
+\paragraph{Torque-sign convention.}
+In the convention of Eq.~\eqref{eq:llg-gilbert}, the sign product of the
+damping-like and field-like SOT is negative when
+$\beta>0$~\cite{park2014macrospin}.  Specifically, the
+scalar prefactors of their respective vector structures are
+$-\gamma\tau_{\mathrm{DLT}}$ and $+\gamma\tau_{\mathrm{FLT}}$, so their sign
+product is
+\[
+    \bigl(-\gamma\tau_{\mathrm{DLT}}\bigr)
+    \bigl(+\gamma\tau_{\mathrm{FLT}}\bigr)
+    = -\gamma^2\beta\tau_{\mathrm{DLT}}^2 < 0
+    \qquad (\beta>0).
+\]
+Thus, a positive $\beta$ means that the two SOT terms have oppositely signed
+scalar prefactors in the LLGS equation, even though the signed amplitudes
+$\tau_{\mathrm{DLT}}$ and $\tau_{\mathrm{FLT}}$ themselves have the same sign.
